@@ -1,5 +1,5 @@
 fun main() {
-    val likes = 111111
+    val likes = 101
 
     if ((likes % 10 == 1) && (likes != 11)) {
 

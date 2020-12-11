@@ -1,29 +1,22 @@
 fun main() {
     var checkTotal: Double = 50000.0
-    var Total: Double = 50000.0 // итог сегодняшней покупки
 
-    var onePercentDiscount: Double = 0.0
-    var fiftyPercentDiscount: Double = 0.0
+    var fivePercentDiscount: Double = 2.0
 
     var amount: Int = 10 // сумма покупок
     var everymonthuser: Boolean = true
 
 
-    if (((amount >= 0) && (amount <= 1000)) && everymonthuser){
+    if ((amount >= 0) && (amount <= 1000)){
         checkTotal -= 0
-        onePercentDiscount = (checkTotal - checkTotal * 1 / 100)
-    }else if(((amount >= 1001) && (amount <= 10_000)) && everymonthuser){
+    }else if((amount >= 1001) && (amount <= 10_000)){
         checkTotal -= 100
-        onePercentDiscount = (checkTotal - checkTotal * 1 / 100)
-    }else if((amount > 10_000) && !everymonthuser){
-        fiftyPercentDiscount = Total - (Total * 5 / 100)
-    }else if((amount > 10_000) && everymonthuser){
-        fiftyPercentDiscount = Total - (Total * 5 / 100)
-        onePercentDiscount = (fiftyPercentDiscount - fiftyPercentDiscount * 1 / 100)
+    }else{
+        checkTotal = checkTotal - (checkTotal * 0.05)
     }
 
-    println("Покупка: $Total ")
-    println("После применения 5% скидки: $fiftyPercentDiscount")
-    println("После применения 1% скидки: $onePercentDiscount ")
+    println("Покупка: $checkTotal ")
+    //println("После применения 5% скидки: $fivePercentDiscount")
+    //println("После применения 1% скидки: $onePercentDiscount ")
 
 }
