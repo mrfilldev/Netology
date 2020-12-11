@@ -1,21 +1,10 @@
 fun main() {
+    var transfer: Int = 5500 //перевод в рублях
+    var amount: Int = transfer * 100 //перевод в копейках
 
-    var amount: Double = 35000.0
-    var commission: Double
-
-    if (amount > 35.0){
-        if ((amount * 0.0075) > 35.0) {
-            commission = amount * 0.0075
-        } else {
-            commission = 35.0
-        }
-
-
-        println("Комиссия $commission")
-    }else {
-        println("Недостаточно средств на счету!")
-        println("платина логи  -_- ")
+    if (amount * 0.0075 > 3500){ //если комиссия с перевода больше, чем 3500 копеек(35 рублей), то
+        println ("Комиссия: " + amount * 75 / 10000 +" копеек") //комиссия равна 0.0075%
+    }else{
+        println ("Комиссия: 3500 копеек") // комиссия 3500 копеек
     }
-
-
 }
