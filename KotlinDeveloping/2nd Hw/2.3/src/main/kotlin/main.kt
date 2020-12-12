@@ -1,22 +1,30 @@
 fun main() {
-    var checkTotal: Double = 50000.0
+    val total: Int = 50998
+    var checkTotal: Int = total * 100
+    var fivePercentDiscount: Int = 0
 
-    var fivePercentDiscount: Double = 2.0
-
-    var amount: Int = 10 // сумма покупок
     var everymonthuser: Boolean = true
 
-
-    if ((amount >= 0) && (amount <= 1000)){
+    if ((checkTotal >= 0) && (checkTotal <= 1000)) {
         checkTotal -= 0
-    }else if((amount >= 1001) && (amount <= 10_000)){
+    } else if ((checkTotal >= 1001) && (checkTotal <= 10_000)) {
         checkTotal -= 100
-    }else{
-        checkTotal = checkTotal - (checkTotal * 0.05)
+    } else {
+        checkTotal -= checkTotal * 5 / 100
+        fivePercentDiscount = checkTotal
     }
 
-    println("Покупка: $checkTotal ")
-    //println("После применения 5% скидки: $fivePercentDiscount")
+
+    //rubles = checkTotal % 100
+    println("Покупка: $total ")
+    if (fivePercentDiscount != 0) {
+        println("после применения 5% скидки - " + fivePercentDiscount / 100 + " рублей " + fivePercentDiscount % 100 + " копеек")
+    }
+    println(checkTotal)
+    if (everymonthuser) {
+        checkTotal -= checkTotal * 1 / 100
+        println("После применения 1% скидки: " + checkTotal / 100 + " рублей " + checkTotal % 100 + " копеек")
+    }
     //println("После применения 1% скидки: $onePercentDiscount ")
 
 }
