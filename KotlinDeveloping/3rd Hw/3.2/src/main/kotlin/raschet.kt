@@ -2,7 +2,7 @@ fun raschet(
     type: String = "Vk Pay",
     sumPerMonth: Int = 0,
     transaction: Int
-): String {
+    ): String {
 
     var result: Int = 0
     var sumPerMonthMax = 0
@@ -30,17 +30,19 @@ fun raschet(
 
     if (way == 1){
         result = 0
-    }else if ((way == 2) && (way == 3)){
-        result = if (transaction in 0..75000_00){
-            0
-        } else{
-            transaction * 6 / 1000 + 20
-        }
-    }else if((way == 4) && (way == 5)) {
-        result = if (transaction in 0..75000_00){
-            0
-        } else{
-            transaction * 75 / 10000
+    }else {
+        if ((way == 2) && (way == 3)){
+            result = if (transaction in 0..75000_00){
+                0
+            } else{
+                transaction * 6 / 1000 + 20
+            }
+        }else if((way == 4) && (way == 5)) {
+            result = if (transaction in 0..75000_00){
+                0
+            } else{
+                transaction * 75 / 10000
+            }
         }
     }
 
