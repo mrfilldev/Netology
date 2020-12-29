@@ -1,13 +1,17 @@
 fun main() {
-    var cardType: String = "Mastercard"
-    //var cardType: String = "Maestro"
-    //var cardType: String = "Vkpay"
-    //var cardType: String = "Visa"
-    //var cardType: String = "Мир"
+    var cardType: String = "Mastercard" // переменные для проверки
+    //var cardType: String = "Maestro" // переменные для проверки
+    //var cardType: String = "Vk Pay" // переменные для проверки
+    //var cardType: String = "Visa" // переменные для проверки
+    //var cardType: String = "Мир" // переменные для проверки
 
-    var sumPerMonth: Int = 0
-    var transaction: Int = 55000_00 // сумма перевода в копейках
+    var amountPerMonth: Int = 0
+    var amountOfTransaction: Int = 140000
 
-    println (raschet(cardType, sumPerMonth, transaction))
+    if (raschet(cardType, amountPerMonth, amountOfTransaction) == -1.0){
+        println ("Перевод не выполнен. Причина: нарушение условий использования банковской карты.")
+    }else{
+        println("Комиссия на перевод: " + raschet(cardType, amountPerMonth, amountOfTransaction))
+    }
 
 }

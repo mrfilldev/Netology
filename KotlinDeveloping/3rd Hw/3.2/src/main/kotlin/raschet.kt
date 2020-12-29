@@ -1,57 +1,60 @@
 fun raschet(
     type: String = "Vk Pay",
-    sumPerMonth: Int = 0,
-    transaction: Int
-    ): String {
+    amountPerMonth: Int = 0,
+    amountOfTransaction: Int
+    ): Double {
 
-    var result: Int = 0
-    var sumPerMonthMax = 0
+    return if(cardControl(type, amountOfTransaction, amountPerMonth) == -1.0){
+        -1.0
+    } else {
 
-    var way: Int = when (type){ // обаботка типажа карты и определение мес. огранич.
-        "Vk Pay" -> 1.also { sumPerMonthMax = 40000_00 }
-        "Mastercard" -> 2.also{sumPerMonthMax = 600000_00} //ВСЕ В КОПЕЙКАХ !!!
-        "Maestro" -> 3.also{sumPerMonthMax = 600000_00}
-        "Visa" -> 4.also{sumPerMonthMax = 600000_00}
-        "Мир" -> 5.also{sumPerMonthMax = 600000_00}
-        else -> 0
-    }
-
-    if (transaction > (sumPerMonthMax - sumPerMonth)){
-        return " Error: Ваш лимит превышен "
-    }else if(way == 0){
-        return " Error: Неизвестная ошибка "
-    }else if((way == 4 || way == 5) && transaction < 35_00){
-        return " Error: Условия вашей карты не позволяют " +
-                "совершать переводы менее 35 рублей"
-    }else if((way == 1)&& transaction > 15000_00){
-        return " Error: Условия вашей карты не позволяют " +
-                "совершать переводы более 15000 рублей в сутки\""
-    }
-
-    if (way == 1){
-        result = 0
-    }else {
-        if ((way == 2) && (way == 3)){
-            result = if (transaction in 0..75000_00){
-                0
-            } else{
-                transaction * 6 / 1000 + 20
-            }
-        }else if((way == 4) && (way == 5)) {
-            result = if (transaction in 0..75000_00){
-                0
-            } else{
-                transaction * 75 / 10000
-            }
+        when (type) { // обаботка типажа карты и определение мес. огранич.
+            "Vk Pay" -> 0.0
+            "Mastercard" -> masterMaestroTransaction(amountOfTransaction, amountPerMonth)
+            "Maestro" -> masterMaestroTransaction(amountOfTransaction, amountPerMonth)
+            "Visa" -> visaMirTransaction(amountOfTransaction, amountPerMonth)
+            "Мир" -> visaMirTransaction(amountOfTransaction, amountPerMonth)
+            else -> -1.0
         }
-    }
 
-    return (" Информация о переводе: $result $type \n" +
-            " - Комиссия: " +
-            result / 100 + " рублей " +
-            result % 100 +" копеек " +
-    "\n - Сумма перевода: " +
-            transaction / 100 + " рублей " +
-            transaction % 100 + " копеек " + '\n')
+    }
 
 }
+
+fun masterMaestroTransaction (transaction: Int, sumLastTransaction: Int): Double{
+    return if (transaction < 75000){
+        0.0
+    } else{
+        (transaction * 6 / 1000 + 20).toDouble()
+    }
+}
+
+fun visaMirTransaction (transaction: Int, sumLastTransaction: Int): Double{
+    return if (transaction * 75 / 10000 > 35){
+        (transaction * 75 / 10000).toDouble()
+    } else {
+        35.0
+    }
+}
+
+fun cardControl(type: String, transaction: Int, sumLastTransaction: Int):Double {
+
+    var maxTransaction: Int
+    var maxForMonth: Int
+    
+    if (type == "Vk Pay"){
+        maxTransaction = 15000
+        maxForMonth = 40000
+    }else{
+        maxTransaction = 150000
+        maxForMonth = 600000
+    }
+
+    return if ((transaction > maxTransaction) || (sumLastTransaction > maxForMonth)) {
+        -1.0
+    } else{
+        0.0
+    }
+
+}
+
