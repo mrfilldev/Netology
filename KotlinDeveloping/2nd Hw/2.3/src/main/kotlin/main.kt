@@ -1,29 +1,47 @@
 fun main() {
 
-    val total: Int = 50998
-    var checkTotal: Int = total * 100
-    var fivePercentDiscount: Int = 0
+    var amountToday: Int = 5000
+    var amountLast: Int = 15000
+    var musicLover: Boolean = true
 
-    var everymonthuser: Boolean = true
+    println("покупка: $amountToday ")
+    usualDiscountText(amountLast, amountToday, musicLover)
 
-    if ((checkTotal >= 0) && (checkTotal <= 1000)) {
-        checkTotal -= 0
-    } else if ((checkTotal >= 1001) && (checkTotal <= 10_000)) {
-        checkTotal -= 100
-    } else {
-        checkTotal -= checkTotal * 5 / 100
-        fivePercentDiscount = checkTotal
+}
+
+
+
+fun usualDiscountText(amountLast:Int, amountToday:Int, musicLover: Boolean) {
+
+    if ((amountLast >= 0) && (amountLast <= 1000)){
+
+        println("после применения 0% скидки - $amountToday")
+
+        if(musicLover){
+            println("после применения 1% скидки - "+(amountToday - amountToday / 100))
+        }
+
+    } else if((amountLast >= 1001) && (amountLast <= 10000)){
+
+        println("после применения скидки размером 100 рублей - " + (amountToday - 100))
+
+        if(musicLover){
+            println("после применения 1% скидки - "+ (amountToday - (amountToday - 100) / 100))
+        }
+
+    } else if (amountLast >= 10001){
+
+        println("после применения 5% скидки - " + (amountToday - amountToday * 5 / 100))
+
+        if(musicLover){
+            println("после применения 1% скидки - "+ ((amountToday - amountToday * 5 / 100) - ((amountToday - amountToday * 5 / 100) / 100)))
+        }
+
+    } else{
+
+        println("Error:  Ошибка формата данных")
+
     }
 
-
-    println("Покупка: $total ")
-    if (fivePercentDiscount != 0) {
-        println("после применения 5% скидки - " + fivePercentDiscount / 100 + " рублей " + fivePercentDiscount % 100 + " копеек")
-    }
-
-    if (everymonthuser) {
-        checkTotal -= checkTotal * 1 / 100
-        println("После применения 1% скидки: " + checkTotal / 100 + " рублей " + checkTotal % 100 + " копеек")
-    }
 
 }
