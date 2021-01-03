@@ -1,0 +1,1 @@
+/home/vlad/Coding/Java/Netology/KotlinDeveloping/3rd Hw/3.2/build/classes/kotlin/main/MainKt.class:/home/vlad/Coding/Java/Netology/KotlinDeveloping/3rd Hw/3.2/build/classes/kotlin/main/RaschetKt.class

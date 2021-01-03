@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestKt" tests="14" skipped="0" failures="0" errors="0" timestamp="2021-01-03T22:54:37" hostname="vlad-ThinkPad-X220" time="0.041">
+  <properties/>
+  <testcase name="cardControl_shouldNotIdentifyError" classname="TestKt" time="0.037"/>
+  <testcase name="raschet_ErrorFalseReturn_Unknown" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorFalseReturn_Maestro" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_shouldNotIdentifyError_VkPay" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorFalseReturn_Mir" classname="TestKt" time="0.0"/>
+  <testcase name="visaMirTransaction_lessThenMinCommission" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorFalseReturn_Vkpay" classname="TestKt" time="0.0"/>
+  <testcase name="cardControl_shouldIdentifyError" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorFalseReturn_Mastercard" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorFalseReturn_Visa" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_shouldIdentifyError_VkPay" classname="TestKt" time="0.0"/>
+  <testcase name="raschet_ErrorTrueReturn" classname="TestKt" time="0.001"/>
+  <testcase name="masterMaestroTransaction_moreThenMinCommission" classname="TestKt" time="0.0"/>
+  <testcase name="visaMirTransaction_moreThenMinCommission" classname="TestKt" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,4 +1,4 @@
-fun raschet(
+fun Raschet(
     type: String = "Vk Pay",
     amountPerMonth: Int = 0,
     amountOfTransaction: Int
@@ -10,10 +10,10 @@ fun raschet(
 
         when (type) { // обаботка типажа карты и определение мес. огранич.
             "Vk Pay" -> 0.0
-            "Mastercard" -> masterMaestroTransaction(amountOfTransaction, amountPerMonth)
-            "Maestro" -> masterMaestroTransaction(amountOfTransaction, amountPerMonth)
-            "Visa" -> visaMirTransaction(amountOfTransaction, amountPerMonth)
-            "Мир" -> visaMirTransaction(amountOfTransaction, amountPerMonth)
+            "Mastercard" -> masterMaestroTransaction(amountOfTransaction)
+            "Maestro" -> masterMaestroTransaction(amountOfTransaction)
+            "Visa" -> visaMirTransaction(amountOfTransaction)
+            "Мир" -> visaMirTransaction(amountOfTransaction)
             else -> -1.0
         }
 
@@ -21,7 +21,7 @@ fun raschet(
 
 }
 
-fun masterMaestroTransaction (transaction: Int, sumLastTransaction: Int): Double{
+fun masterMaestroTransaction (transaction: Int): Double{
     return if (transaction < 75000){
         0.0
     } else{
@@ -29,7 +29,7 @@ fun masterMaestroTransaction (transaction: Int, sumLastTransaction: Int): Double
     }
 }
 
-fun visaMirTransaction (transaction: Int, sumLastTransaction: Int): Double{
+fun visaMirTransaction (transaction: Int): Double{
     return if (transaction * 75 / 10000 > 35){
         (transaction * 75 / 10000).toDouble()
     } else {
@@ -37,7 +37,13 @@ fun visaMirTransaction (transaction: Int, sumLastTransaction: Int): Double{
     }
 }
 
-fun cardControl(type: String, transaction: Int, sumLastTransaction: Int):Double {
+fun cardControl(
+
+    type: String,
+    transaction: Int,
+    sumLastTransaction: Int
+
+):Double {
 
     var maxTransaction: Int
     var maxForMonth: Int
