@@ -20,11 +20,18 @@ object WallService {
     }
 
     fun update(post: Post): Boolean{ // функця заглушка
-        for (post in posts)
-
-        if ()
-
-
+        val neededId = post.id
+        posts.forEachIndexed { index,  post ->//?
+            if (post.id == neededId) {
+                val targetPost = posts[index]
+                posts[index] = targetPost.copy(
+                    id = post.id,
+                    date = post.date,
+                )
+               return true
+            }
+        }
+        return false
     }
 
     fun outputPosts(){

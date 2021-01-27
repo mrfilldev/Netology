@@ -28,6 +28,8 @@ fun main() {
     // добвление постов в массив
     WallService.add(firstPost); WallService.add(secondPost); WallService.add(thirdPost)
 
+    // редактирование поста и обновление его
+    WallService.update(copy)
     //блок вывода
     println(WallService.posts)
     println(WallService.outputPosts())
